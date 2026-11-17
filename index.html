@@ -573,6 +573,24 @@ section{padding:clamp(64px,9vw,130px) 0}
 .social a svg{width:18px;height:18px}
 .copy{font-family:var(--mono);font-size:11px;color:#6f6f80}
 
+/* sliders */
+.cur{font-family:var(--disp);font-weight:700;font-size:30px;color:var(--blue);line-height:1;margin-top:2px}
+.cur small{font-family:var(--body);font-size:13px;font-weight:600;color:var(--ink2)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:7px;border-radius:999px;margin:16px 0 8px;background:linear-gradient(to right,var(--blue) var(--p,50%),#e6e4ef var(--p,50%));outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:3px solid var(--blue);box-shadow:0 7px 16px -5px rgba(32,0,234,.7);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border:3px solid var(--blue);border-radius:50%;background:#fff;box-shadow:0 7px 16px -5px rgba(32,0,234,.7)}
+input[type=range]::-moz-range-track{background:transparent}
+input[type=range]:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+.mm{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--gray);margin-top:2px}
+
+/* responsive utilities */
+.hide-mobile{display:revert}
+.hide-desktop{display:none}
+@media(max-width:700px){
+  .hide-mobile{display:none !important}
+  .hide-desktop{display:revert !important}
+}
+
 /* responsive */
 @media(max-width:880px){
   .hero .grid,.about .grid,.metric,.cases .featured,.cgrid,.biz,.calc{grid-template-columns:1fr}
@@ -671,28 +689,27 @@ section{padding:clamp(64px,9vw,130px) 0}
 </div></section>
 <section id="calc" class="calcsec"><div class="wrap">
   <div class="sh"><div class="num">04 / Калькулятор</div><h2 class="ttl h2">Сколько вы экономите с ИИ</h2>
-   <p class="sub lead">Прикиньте выгоду за минуту — выберите объём рутины и время на операцию.</p></div>
-  <div class="calc"><input class="cr" type="radio" name="o" id="o1"><input class="cr" type="radio" name="o" id="o2" checked><input class="cr" type="radio" name="o" id="o3"><input class="cr" type="radio" name="o" id="o4"><input class="cr" type="radio" name="t" id="t1"><input class="cr" type="radio" name="t" id="t2" checked><input class="cr" type="radio" name="t" id="t3">
+   <p class="sub lead">Подвигайте ползунки — расчёт обновляется вживую.</p></div>
+  <div class="calc">
     <div class="panel card">
-      <div class="grp"><div class="lab">Рутинных операций в месяц</div><div class="chips"><label class="ch" for="o1">300</label><label class="ch" for="o2">600</label><label class="ch" for="o3">1200</label><label class="ch" for="o4">2500</label></div></div>
-      <div class="grp"><div class="lab">Минут на одну операцию вручную</div><div class="chips"><label class="ch" for="t1">5 мин</label><label class="ch" for="t2">15 мин</label><label class="ch" for="t3">30 мин</label></div></div>
+      <div class="grp"><div class="lab">Рутинных операций в месяц</div>
+        <div class="cur"><span id="opsV">600</span> <small>операций</small></div>
+        <input type="range" id="ops" min="100" max="3000" step="50" value="600">
+        <div class="mm"><span>100</span><span>3000</span></div></div>
+      <div class="grp"><div class="lab">Минут на одну операцию вручную</div>
+        <div class="cur"><span id="tpoV">15</span> <small>минут</small></div>
+        <input type="range" id="tpo" min="0" max="180" step="5" value="15">
+        <div class="mm"><span>0</span><span>180</span></div></div>
       <div class="note">Операция — любое повторяющееся действие: проверки документов, КП, расчёты, обзвоны. В среднем клиенты экономят <b>от 35 000 ₽ каждый месяц</b>.</div>
     </div>
-    <div class="result card"><h3>Итог</h3><div class="rset" data-k="o1t1"><div class="rk">Экономия часов в год</div><div class="rbig">300</div><div class="rrow"><span>Часов в месяц</span><b>25</b></div><div class="rrow"><span>Рабочих дней в год</span><b>38</b></div></div><div class="rset" data-k="o1t2"><div class="rk">Экономия часов в год</div><div class="rbig">900</div><div class="rrow"><span>Часов в месяц</span><b>75</b></div><div class="rrow"><span>Рабочих дней в год</span><b>112</b></div></div><div class="rset" data-k="o1t3"><div class="rk">Экономия часов в год</div><div class="rbig">1 800</div><div class="rrow"><span>Часов в месяц</span><b>150</b></div><div class="rrow"><span>Рабочих дней в год</span><b>225</b></div></div><div class="rset" data-k="o2t1"><div class="rk">Экономия часов в год</div><div class="rbig">600</div><div class="rrow"><span>Часов в месяц</span><b>50</b></div><div class="rrow"><span>Рабочих дней в год</span><b>75</b></div></div><div class="rset" data-k="o2t2"><div class="rk">Экономия часов в год</div><div class="rbig">1 800</div><div class="rrow"><span>Часов в месяц</span><b>150</b></div><div class="rrow"><span>Рабочих дней в год</span><b>225</b></div></div><div class="rset" data-k="o2t3"><div class="rk">Экономия часов в год</div><div class="rbig">3 600</div><div class="rrow"><span>Часов в месяц</span><b>300</b></div><div class="rrow"><span>Рабочих дней в год</span><b>450</b></div></div><div class="rset" data-k="o3t1"><div class="rk">Экономия часов в год</div><div class="rbig">1 200</div><div class="rrow"><span>Часов в месяц</span><b>100</b></div><div class="rrow"><span>Рабочих дней в год</span><b>150</b></div></div><div class="rset" data-k="o3t2"><div class="rk">Экономия часов в год</div><div class="rbig">3 600</div><div class="rrow"><span>Часов в месяц</span><b>300</b></div><div class="rrow"><span>Рабочих дней в год</span><b>450</b></div></div><div class="rset" data-k="o3t3"><div class="rk">Экономия часов в год</div><div class="rbig">7 200</div><div class="rrow"><span>Часов в месяц</span><b>600</b></div><div class="rrow"><span>Рабочих дней в год</span><b>900</b></div></div><div class="rset" data-k="o4t1"><div class="rk">Экономия часов в год</div><div class="rbig">2 500</div><div class="rrow"><span>Часов в месяц</span><b>208</b></div><div class="rrow"><span>Рабочих дней в год</span><b>312</b></div></div><div class="rset" data-k="o4t2"><div class="rk">Экономия часов в год</div><div class="rbig">7 500</div><div class="rrow"><span>Часов в месяц</span><b>625</b></div><div class="rrow"><span>Рабочих дней в год</span><b>938</b></div></div><div class="rset" data-k="o4t3"><div class="rk">Экономия часов в год</div><div class="rbig">15 000</div><div class="rrow"><span>Часов в месяц</span><b>1 250</b></div><div class="rrow"><span>Рабочих дней в год</span><b>1 875</b></div></div><a class="btn wt" href="#contact" style="margin-top:22px">Персональный расчёт <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div>
+    <div class="result card"><h3>Итог</h3>
+      <div class="rk">Экономия часов в год</div><div class="rbig" id="hYear">1 800</div>
+      <div class="rrow"><span>Часов в месяц</span><b id="hMonth">150</b></div>
+      <div class="rrow"><span>Рабочих дней в год</span><b id="dYear">225</b></div>
+      <a class="btn wt" href="#contact" style="margin-top:22px">Персональный расчёт <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    </div>
   </div>
-</div><style>#o1:checked ~ .panel .ch[for="o1"], #o2:checked ~ .panel .ch[for="o2"], #o3:checked ~ .panel .ch[for="o3"], #o4:checked ~ .panel .ch[for="o4"], #t1:checked ~ .panel .ch[for="t1"], #t2:checked ~ .panel .ch[for="t2"], #t3:checked ~ .panel .ch[for="t3"]{background:var(--blue);color:#fff;border-color:transparent;box-shadow:0 10px 20px -10px rgba(32,0,234,.6)}
-#o1:checked ~ #t1:checked ~ .result .rset[data-k="o1t1"],
-#o1:checked ~ #t2:checked ~ .result .rset[data-k="o1t2"],
-#o1:checked ~ #t3:checked ~ .result .rset[data-k="o1t3"],
-#o2:checked ~ #t1:checked ~ .result .rset[data-k="o2t1"],
-#o2:checked ~ #t2:checked ~ .result .rset[data-k="o2t2"],
-#o2:checked ~ #t3:checked ~ .result .rset[data-k="o2t3"],
-#o3:checked ~ #t1:checked ~ .result .rset[data-k="o3t1"],
-#o3:checked ~ #t2:checked ~ .result .rset[data-k="o3t2"],
-#o3:checked ~ #t3:checked ~ .result .rset[data-k="o3t3"],
-#o4:checked ~ #t1:checked ~ .result .rset[data-k="o4t1"],
-#o4:checked ~ #t2:checked ~ .result .rset[data-k="o4t2"],
-#o4:checked ~ #t3:checked ~ .result .rset[data-k="o4t3"]{display:block}</style></section>
+</div></section>
 <section class="cta2"><span class="glow"></span><div class="wrap">
   <span class="ey">◆ Контакты</span>
   <h2 class="h1" style="margin:20px auto 0;max-width:16ch">Готовы обсудить вашу задачу?</h2>
@@ -720,6 +737,23 @@ section{padding:clamp(64px,9vw,130px) 0}
     <div class="copy">© 2026 Максим Герштейн · AI-инженер</div>
   </div>
 </div></footer>
+<script>
+(function(){
+  var ops=document.getElementById('ops'), tpo=document.getElementById('tpo');
+  if(ops&&tpo){
+    var f=function(n){return Math.round(n).toLocaleString('ru-RU');};
+    var fill=function(el){var p=(el.value-el.min)/(el.max-el.min)*100; el.style.setProperty('--p',p+'%');};
+    var up=function(){var N=+ops.value,T=+tpo.value,m=N*T/60,y=m*12;
+      document.getElementById('opsV').textContent=N.toLocaleString('ru-RU');
+      document.getElementById('tpoV').textContent=T;
+      document.getElementById('hYear').textContent=f(y);
+      document.getElementById('hMonth').textContent=f(m);
+      document.getElementById('dYear').textContent=f(y/8);
+      fill(ops); fill(tpo);};
+    ops.addEventListener('input',up); tpo.addEventListener('input',up); up();
+  }
+})();
+</script>
 
 </body>
 </html>
