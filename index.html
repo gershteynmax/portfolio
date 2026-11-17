@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Gershteyn · Портфолио</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<script>try{if(window.matchMedia&&matchMedia("(orientation: landscape) and (min-width: 560px)").matches)document.documentElement.classList.add("deck-mode")}catch(e){}</script>
 <style>
 /* cyrillic-ext */
 @font-face {
@@ -863,6 +862,133 @@ html:not(.deck-mode) .cc .act .btn{flex:1 1 auto; justify-content:center; text-a
 #o4:checked ~ #t2:checked ~ .cres .rset[data-k="o4t2"],
 #o4:checked ~ #t3:checked ~ .cres .rset[data-k="o4t3"]{display:block}
 @media (max-width:720px){ .calc2{grid-template-columns:1fr} }
+
+/* ==================================================================
+   VYRO THEME — soft white, bold black type, electric-blue accents,
+   lavender glows, dark cards, black footer. Single vertical scroll.
+   ================================================================== */
+:root{
+  --vb:#2000EA; --vb2:#4a2bff; --vl:#9E92E7; --vw:#FFF8F8; --vg:#8D8D8D; --vk:#0b0b12;
+  /* remap the old lime tokens so every component recolors at once */
+  --lime:#2000EA; --lime-deep:#2000EA; --lime-ink:#ffffff; --violet:#9E92E7;
+  --base:#FFF8F8; --ink:#0a0a0f; --ink-soft:#4b4b57; --ink-faint:#8D8D8D;
+  --glass:#ffffff; --glass-2:#ffffff; --glass-brd:#ececf1;
+  --edge:rgba(32,0,234,.14); --edge-lime:rgba(32,0,234,.9); --track:rgba(10,10,20,.12);
+}
+html{scroll-behavior:smooth; scroll-padding-top:70px}
+body{background:var(--vw); color:var(--ink); overflow-x:hidden; overflow-y:auto}
+.field{display:none}
+.deck,.track{display:block; height:auto; overflow:visible}
+.slide{position:relative; width:100%; height:auto; overflow:visible; opacity:1; visibility:visible; transform:none; background:var(--vw)}
+.slide::before{display:none}
+
+/* container */
+.si{max-width:1180px; margin:0 auto; padding:72px 22px 72px}
+.slide.cover .si{min-height:auto; display:block; padding-top:30px}
+
+/* header */
+.topbar{position:sticky; top:0; z-index:60; background:linear-gradient(to bottom, rgba(255,248,248,.95), rgba(255,248,248,.6) 70%, transparent); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); padding:14px 22px}
+.brand b{color:var(--ink); font-weight:700}
+.mark rect{}
+.menu a{color:var(--ink-soft)} .menu a:hover{background:rgba(32,0,234,.08); color:var(--vb)}
+.navcta{background:var(--vb); color:#fff; box-shadow:0 12px 26px -12px rgba(32,0,234,.7)}
+
+/* typography */
+.bigtitle,.case .title,.about-text h2.title,.cover h1,.bl h3,.cres h3,.wc h3,.step h4{color:var(--ink); font-weight:700; letter-spacing:-.03em}
+.cover h1{font-size:clamp(42px,8vw,86px); line-height:.96}
+.cover h1 b{color:var(--vg); font-weight:700}
+.bigtitle{font-size:clamp(30px,5vw,56px); font-weight:700}
+.case .title{font-size:clamp(28px,4vw,46px)}
+.cover .who{color:var(--ink)} .cover .who span{color:var(--vg)}
+.cover .sub,.bio,.blk p,.wc p,.step .m,.dsub,.cnote,.hint,.client{color:var(--ink-soft)}
+.role{color:var(--vb)}
+
+/* eyebrow pills */
+.pill{background:var(--vb); color:#fff; box-shadow:0 10px 24px -12px rgba(32,0,234,.7); letter-spacing:.1em}
+.pill.ghost{background:#f0eef7; color:#5a5a66; border:none; box-shadow:none}
+.eyebrow .tag{color:var(--ink-faint)}
+
+/* cards: flat white, soft shadow (no glass blur) */
+.glass,.wc,.stat,.kpi,.bizcard,.cbig,.cres,.cc,.frame,.blk,.dchip,.dtile,.card3d{
+  -webkit-backdrop-filter:none!important; backdrop-filter:none!important}
+.glass,.wc,.bizcard,.cbig,.frame{background:#fff; border:1px solid var(--glass-brd); box-shadow:0 30px 70px -40px rgba(20,16,60,.3)}
+.stat,.kpi,.cc,.dtile{background:#fff; border:1px solid var(--glass-brd); box-shadow:0 20px 44px -30px rgba(20,16,60,.26)}
+.blk{background:#f5f4fa; border:1px solid #ececf1}
+.blk.sol{background:linear-gradient(135deg, rgba(32,0,234,.1), rgba(158,146,231,.12)); border-color:rgba(32,0,234,.18)}
+.blk.sol .lab{color:var(--vb)} .blk.sol .lab::before{background:var(--vb)}
+.cres{background:linear-gradient(160deg,#17122e,#0b0b16); border:1px solid #241c48; box-shadow:0 36px 80px -40px rgba(32,0,234,.5); color:var(--vw)}
+.cres h3,.rbig .v,.rrow .v,.rsub{color:#fff} .rbig .k,.rrow .k{color:#b9b4d6}
+.rdiv{background:rgba(255,255,255,.14)}
+
+/* numbers / stats */
+.stat .v,.kpi .v,.dcount b,.bl .num{color:var(--ink)}
+.kpi .v small,.stat .v small{color:var(--vb)}
+.dirs span{background:rgba(32,0,234,.08); color:var(--vb); border:1px solid rgba(32,0,234,.16)}
+
+/* buttons / CTAs */
+.startbtn,.cta a.btnbig,.cc .btn,.navcta{background:var(--vb); color:#fff}
+.startbtn{box-shadow:0 16px 30px -12px rgba(32,0,234,.7)} .startbtn .ar{background:rgba(255,255,255,.22)}
+.cta a.btnbig{background:var(--vb); box-shadow:0 18px 34px -14px rgba(32,0,234,.8)}
+.cc .btn{box-shadow:0 10px 22px -10px rgba(32,0,234,.6)}
+.cc .btn.ghost{background:#24243a; color:#d7d7ea; border:none; box-shadow:none}
+
+/* icons/accents that were lime */
+.wc .ic,.income .ic,.cc.primary .cico2,.step.fin .sic,.dchip.hub .dic,.dchip.out .dic{
+  background:linear-gradient(145deg, rgba(32,0,234,.14), rgba(158,146,231,.2)); color:var(--vb); border-color:rgba(32,0,234,.2)}
+.dtile.lime .ti,.dchip .dic{color:var(--vb)}
+.dwire .flow-l{stroke:var(--vb); filter:drop-shadow(0 0 4px rgba(32,0,234,.7))}
+.dwire .hd{fill:var(--vb)}
+
+/* hero visual → dark card with lavender/blue glow */
+.cover-visual,.hero-visual{position:relative; border-radius:28px; overflow:hidden;
+  background:radial-gradient(120% 90% at 20% 0%, #3a2bd6 0%, #1b1550 45%, #0a0a16 100%)}
+.cover-visual{min-height:clamp(320px,52vw,560px); padding:20px}
+.hero-visual{min-height:260px; padding:16px}
+.cover-visual::after,.hero-visual::after{content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(60% 50% at 80% 90%, rgba(158,146,231,.5), transparent 70%)}
+.cover-visual .card3d,.hero-visual .card3d{background:linear-gradient(150deg, rgba(255,255,255,.14), rgba(255,255,255,.05)); border-color:rgba(255,255,255,.2); color:#fff}
+.card3d .ck{color:#cfc9ef} .card3d .cico{background:var(--vb); color:#fff}
+.card3d .wv i{background:linear-gradient(to top,var(--vl),rgba(158,146,231,.3))}
+.card3d .chip{color:#fff; background:rgba(32,0,234,.5); border-color:rgba(158,146,231,.5)}
+.scene .ring{border-color:rgba(158,146,231,.4)}
+.scene .glow{background:radial-gradient(circle, rgba(74,43,255,.6), transparent 68%)}
+.coin.c1{background:radial-gradient(circle at 36% 30%,#cfc6ff,#9E92E7 55%,#4a2bff 100%); color:#fff}
+.mf-orb,.coin{display:block}
+
+/* photo (about) → dark duotone frame */
+.photo .pf{box-shadow:0 40px 80px -30px rgba(32,0,234,.5)}
+.photo .pf::after{background:linear-gradient(150deg, rgba(74,43,255,.35), transparent 50%)}
+.photo .glow{background:radial-gradient(circle, rgba(74,43,255,.5), transparent 66%)}
+.photo .badge{background:var(--vb); color:#fff; border:none} .photo .badge i{background:#fff}
+
+/* ===== contacts → black footer ===== */
+#s-contact{background:var(--vk)!important}
+#s-contact .bigtitle,#s-contact .who{color:#fff}
+#s-contact .bigtitle span{color:var(--vl)!important}
+#s-contact .bio{color:#9a99ad}
+#s-contact .pill{background:var(--vb)}
+#s-contact .cc{background:#15151f; border:1px solid #262636; box-shadow:none}
+#s-contact .cc .k{color:#8D8D8D} #s-contact .cc .v{color:#fff}
+#s-contact .cc .cico2{background:#20202e; color:#cfc9ef; border-color:#2c2c3e}
+#s-contact .cc.primary{background:linear-gradient(135deg, rgba(32,0,234,.3), rgba(158,146,231,.14)); border-color:rgba(32,0,234,.4)}
+#s-contact .hero-visual{background:radial-gradient(120% 90% at 50% 0%, #3a2bd6, #0a0a16)}
+
+/* desktop layout: restore multi-column, wider */
+@media (min-width:860px){
+  .si{padding:96px 40px}
+  .cover-grid{grid-template-columns:1.08fr .92fr; gap:40px; align-items:center}
+  .about{grid-template-columns:.85fr 1.15fr; gap:48px}
+  .chead{grid-template-columns:1.05fr .95fr; gap:40px}
+  .whygrid{grid-template-columns:repeat(3,1fr)}
+  .duo{grid-template-columns:1fr 1fr}
+  .kpis,.dstats{grid-template-columns:repeat(3,1fr)}
+  .calc2{grid-template-columns:1.05fr .95fr}
+  .bizcard,.bizcard.rev{grid-template-columns:1.05fr .95fr}
+  .cgrid{grid-template-columns:1fr 1fr}
+  .dflow.wide{flex-direction:row}
+  .dflow.wide .dwire{transform:none}
+  .cover h1{font-size:clamp(56px,6vw,88px)}
+}
 </style>
 </head>
 <body>
@@ -870,7 +996,6 @@ html:not(.deck-mode) .cc .act .btn{flex:1 1 auto; justify-content:center; text-a
 
 <div class="field" aria-hidden="true"></div>
 
-<div class="dprog"><span id="progbar"></span></div>
 
 <header class="topbar">
   <a class="brand" href="#s-cover" data-slide="s-cover"><svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect x="2" y="2" width="13" height="13" rx="4" fill="var(--ink)"/><rect x="19" y="2" width="13" height="13" rx="4" fill="var(--lime-deep)"/><rect x="2" y="19" width="13" height="13" rx="4" fill="var(--lime-deep)"/><rect x="19" y="19" width="13" height="13" rx="4" fill="var(--ink)"/></svg><b>Gershteyn</b></a>
@@ -1290,57 +1415,10 @@ html:not(.deck-mode) .cc .act .btn{flex:1 1 auto; justify-content:center; text-a
 </div>
 </main>
 
-<div class="deck-ui" aria-hidden="true">
-  <button class="dbtn" id="prev" type="button" aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
-  <div class="dcount"><b id="cnum">1</b> / 11</div>
-  <button class="dbtn" id="next" type="button" aria-label="Вперёд"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
-</div>
-
 <script>
 (function(){
   /* Horizontal slide deck — enhancement only. Without JS the page is a plain
      vertical scroll (document previews in Telegram / Files get that, and it just works). */
-  var mq = window.matchMedia ? window.matchMedia('(orientation: landscape) and (min-width: 560px)') : null;
-  var deck=document.getElementById('deck');
-  var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
-  var prev=document.getElementById('prev'), next=document.getElementById('next');
-  var cnum=document.getElementById('cnum'), prog=document.getElementById('progbar');
-  var ids=slides.map(function(s){return s.id;});
-  var i=0;
-  function deckOn(){ return !!(mq && mq.matches); }
-  function render(){
-    for(var k=0;k<slides.length;k++){ slides[k].classList.toggle('active', k===i); }
-    if(cnum) cnum.textContent=i+1;
-    if(prog) prog.style.width=((i+1)/slides.length*100)+'%';
-    if(prev) prev.classList.toggle('disa', i===0);
-    if(next) next.classList.toggle('disa', i===slides.length-1);
-  }
-  function set(n){ i=Math.max(0,Math.min(slides.length-1,n)); if(slides[i]) slides[i].scrollTop=0; render(); }
-  function applyMode(){
-    var on=deckOn();
-    document.documentElement.classList.toggle('deck-mode', on);
-    if(on){ if(i<0||i>=slides.length) i=0; render(); }
-  }
-  if(deck && slides.length){
-    if(prev) prev.addEventListener('click',function(){ if(deckOn()) set(i-1); });
-    if(next) next.addEventListener('click',function(){ if(deckOn()) set(i+1); });
-    document.querySelectorAll('[data-slide]').forEach(function(a){ a.addEventListener('click',function(e){
-      if(!deckOn()) return; var k=ids.indexOf(this.getAttribute('data-slide')); if(k>=0){ e.preventDefault(); set(k); } }); });
-    document.addEventListener('keydown',function(e){ if(!deckOn()) return; var t=e.target; if(t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
-      if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();set(i+1);}
-      else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();set(i-1);}
-      else if(e.key==='Home'){e.preventDefault();set(0);}
-      else if(e.key==='End'){e.preventDefault();set(slides.length-1);} });
-    var sx=0,sy=0,stime=0,ok=true;
-    deck.addEventListener('touchstart',function(e){ if(!deckOn()){ok=false;return;} var t=e.target;
-      ok=!(t.closest && t.closest('input,button,a,textarea,select,label'));
-      var p=e.touches[0]; sx=p.clientX; sy=p.clientY; stime=Date.now(); },{passive:true});
-    deck.addEventListener('touchend',function(e){ if(!ok||!deckOn()) return; var p=e.changedTouches[0];
-      var dx=p.clientX-sx, dy=p.clientY-sy; if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)*1.5 && Date.now()-stime<800){ set(i+(dx<0?1:-1)); } },{passive:true});
-    applyMode();
-    if(mq){ if(mq.addEventListener) mq.addEventListener('change',applyMode); else if(mq.addListener) mq.addListener(applyMode); }
-  }
-
   // copy
   document.querySelectorAll('.btn[data-copy]').forEach(function(btn){
     btn.addEventListener('click',function(e){ e.preventDefault();
