@@ -462,9 +462,9 @@ section{padding:clamp(64px,9vw,130px) 0}
 .hero h1 i{font-style:normal;color:var(--gray)}
 .hero .lead{margin-top:26px}
 .hero .cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
-.hero .stage{position:relative;min-height:clamp(380px,46vw,560px);border-radius:32px;overflow:hidden;background:radial-gradient(120% 100% at 25% 0%,#4a35e0,#1b1350 46%,#07070f);display:grid;place-items:center}
-.hero .stage .halo{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(123,96,255,.55),transparent 66%);filter:blur(10px)}
-.hero .stage .silh{position:absolute;bottom:0;width:72%;height:88%;background:radial-gradient(60% 70% at 50% 40%,#1b1446,#0a0a18 72%);-webkit-mask:radial-gradient(42% 46% at 50% 42%,#000 60%,transparent 72%);mask:radial-gradient(42% 46% at 50% 42%,#000 60%,transparent 72%);opacity:.9}
+.hero .stage{position:relative;min-height:clamp(380px,46vw,560px);border-radius:32px;overflow:hidden;background:#0a0a16;display:grid;place-items:center}
+.hero .stage .svid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:brightness(.6) contrast(1.03) saturate(1.12)}
+.hero .stage .stint{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(22,12,64,.22),rgba(8,6,20,.74)),radial-gradient(82% 72% at 50% 24%,rgba(86,54,255,.5),transparent 70%),linear-gradient(140deg,rgba(32,0,234,.34),transparent 56%)}
 .hero .pcard{position:relative;z-index:2;width:min(78%,360px);border-radius:22px;padding:18px;background:linear-gradient(150deg,rgba(255,255,255,.16),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 30px 60px -24px rgba(0,0,0,.5)}
 .pcard .pk{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#cfc9f2}
 .pcard .pk .d{width:22px;height:22px;border-radius:7px;background:var(--blue);display:grid;place-items:center}
@@ -621,7 +621,9 @@ input[type=range]:focus-visible{outline:2px solid var(--blue);outline-offset:4px
     <p class="lead">Максим Герштейн — AI-инженер. Строю цифровых сотрудников и оркестрационные системы, которые приносят измеримый результат на автопилоте.</p>
     <div class="cta"><a class="btn" href="#contact">Обсудить задачу <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a><a class="btn gh" href="#cases">Смотреть кейсы</a></div>
   </div>
-  <div class="stage"><span class="halo"></span><span class="silh"></span>
+  <div class="stage">
+    <video class="svid" autoplay muted loop playsinline poster="hero-poster.jpg"><source src="hero.mp4" type="video/mp4"></video>
+    <span class="stint"></span>
     <div class="pcard">
       <div class="pk"><span class="d"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.5 2.3l1.75 4.95 4.95 1.75-4.95 1.75L11.5 15.7 9.75 10.75 4.8 9l4.95-1.75z"/></svg></span> Ваш AI-партнёр</div>
       <div class="bars"><i style="height:30%"></i><i style="height:67%"></i><i style="height:44%"></i><i style="height:81%"></i><i style="height:58%"></i><i style="height:35%"></i><i style="height:72%"></i><i style="height:49%"></i><i style="height:86%"></i><i style="height:63%"></i><i style="height:40%"></i><i style="height:77%"></i><i style="height:54%"></i><i style="height:31%"></i><i style="height:68%"></i><i style="height:45%"></i><i style="height:82%"></i><i style="height:59%"></i><i style="height:36%"></i><i style="height:73%"></i><i style="height:50%"></i><i style="height:87%"></i><i style="height:64%"></i><i style="height:41%"></i><i style="height:78%"></i><i style="height:55%"></i></div>
