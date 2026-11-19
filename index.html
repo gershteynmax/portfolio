@@ -477,7 +477,8 @@ section{padding:clamp(64px,9vw,130px) 0}
 /* ===== ABOUT ===== */
 .about .grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:48px;align-items:center}
 .about .photo{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 50px 90px -40px rgba(32,0,234,.5)}
-.about .photo img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.02)}
+.about .photo img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.02);transform:scale(1.07);animation:floaty 7s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0) scale(1.07)}50%{transform:translateY(-13px) scale(1.07)}}
 .about .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(74,43,255,.26),transparent 48%)}
 .about .badge{position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;font-weight:700;color:#fff;background:var(--blue);border-radius:999px;padding:9px 15px}
 .about .badge i{width:7px;height:7px;border-radius:50%;background:#fff}
@@ -498,7 +499,7 @@ section{padding:clamp(64px,9vw,130px) 0}
 .metric .big small{font-size:.26em;color:var(--gray);font-weight:600;letter-spacing:0}
 .metric .mk{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
 .bars2{display:flex;align-items:flex-end;gap:5px;height:clamp(90px,14vw,150px)}
-.bars2 i{flex:1;border-radius:3px;background:linear-gradient(to top,var(--blue),var(--lav))}
+.bars2 i{flex:1;border-radius:3px;background:linear-gradient(to top,#2a1dae,#9E92E7)}
 .bars2 i.off{background:#dfdde9}
 .metric .row{display:flex;gap:26px;flex-wrap:wrap;margin-top:22px}
 .metric .row div b{font-family:var(--disp);font-weight:700;font-size:22px}
@@ -524,7 +525,17 @@ section{padding:clamp(64px,9vw,130px) 0}
 .flow .fline:nth-of-type(8)::after{animation-delay:1.95s}
 @keyframes flowdot{0%{top:-9px;opacity:0}12%{opacity:1}88%{opacity:1}100%{top:20px;opacity:0}}
 @keyframes hubpulse{0%,100%{box-shadow:0 0 0 1px rgba(158,146,231,.22)}50%{box-shadow:0 0 22px 3px rgba(123,96,255,.5)}}
-@media(prefers-reduced-motion:reduce){.fline::after,.fnode.hub{animation:none}}
+/* equalizer bars (hero card) gently sway */
+.pcard .bars i{transform-origin:bottom;animation:eqbar 1.7s ease-in-out infinite alternate}
+@keyframes eqbar{0%{transform:scaleY(.6)}100%{transform:scaleY(1.05)}}
+/* metric bars — purple progress wave sweeping back and forth */
+.bars2 i:not(.off){transform-origin:bottom;animation:wave2 2.4s ease-in-out infinite alternate}
+@keyframes wave2{0%{transform:scaleY(.4)}100%{transform:scaleY(1)}}
+/* featured dark case — make stat chips clearly legible (white + outline) */
+.featured .res .r{background:rgba(255,255,255,.09);border:1px solid rgba(158,146,231,.55);box-shadow:0 6px 16px -8px rgba(0,0,0,.55)}
+.featured .res .r b{color:#fff !important;text-shadow:0 1px 3px rgba(0,0,0,.7),0 0 1px rgba(0,0,0,.9)}
+.featured .res .r span{color:#eae7ff !important;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+@media(prefers-reduced-motion:reduce){.fline::after,.fnode.hub,.pcard .bars i,.bars2 i,.about .photo img{animation:none}}
 .cgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
 .ccard{padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform .18s,box-shadow .18s}
 .ccard:hover{transform:translateY(-4px);box-shadow:0 46px 90px -48px rgba(32,0,234,.4)}
@@ -565,6 +576,7 @@ section{padding:clamp(64px,9vw,130px) 0}
 .rk{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#b9b4df}
 .rrow{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.14)}
 .rrow span{color:#c7c3e6;font-size:14px} .rrow b{font-family:var(--disp);font-weight:700;font-size:22px}
+.rfoot{margin-top:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:#9c97c4;line-height:1.5}
 
 /* ===== CTA ===== */
 .cta2{position:relative;text-align:center;padding:clamp(60px,10vw,140px) 0;overflow:hidden}
@@ -656,7 +668,7 @@ input[type=range]:focus-visible{outline:2px solid var(--blue);outline-offset:4px
     <span class="stint"></span>
     <div class="pcard">
       <div class="pk"><span class="d"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.5 2.3l1.75 4.95 4.95 1.75-4.95 1.75L11.5 15.7 9.75 10.75 4.8 9l4.95-1.75z"/></svg></span> Ваш AI-партнёр</div>
-      <div class="bars"><i style="height:30%"></i><i style="height:67%"></i><i style="height:44%"></i><i style="height:81%"></i><i style="height:58%"></i><i style="height:35%"></i><i style="height:72%"></i><i style="height:49%"></i><i style="height:86%"></i><i style="height:63%"></i><i style="height:40%"></i><i style="height:77%"></i><i style="height:54%"></i><i style="height:31%"></i><i style="height:68%"></i><i style="height:45%"></i><i style="height:82%"></i><i style="height:59%"></i><i style="height:36%"></i><i style="height:73%"></i><i style="height:50%"></i><i style="height:87%"></i><i style="height:64%"></i><i style="height:41%"></i><i style="height:78%"></i><i style="height:55%"></i></div>
+      <div class="bars"><i style="height:30%;animation-delay:0.00s"></i><i style="height:67%;animation-delay:0.12s"></i><i style="height:44%;animation-delay:0.24s"></i><i style="height:81%;animation-delay:0.36s"></i><i style="height:58%;animation-delay:0.48s"></i><i style="height:35%;animation-delay:0.60s"></i><i style="height:72%;animation-delay:0.72s"></i><i style="height:49%;animation-delay:0.84s"></i><i style="height:86%;animation-delay:0.96s"></i><i style="height:63%;animation-delay:1.08s"></i><i style="height:40%;animation-delay:1.20s"></i><i style="height:77%;animation-delay:1.32s"></i><i style="height:54%;animation-delay:1.44s"></i><i style="height:31%;animation-delay:0.00s"></i><i style="height:68%;animation-delay:0.12s"></i><i style="height:45%;animation-delay:0.24s"></i><i style="height:82%;animation-delay:0.36s"></i><i style="height:59%;animation-delay:0.48s"></i><i style="height:36%;animation-delay:0.60s"></i><i style="height:73%;animation-delay:0.72s"></i><i style="height:50%;animation-delay:0.84s"></i><i style="height:87%;animation-delay:0.96s"></i><i style="height:64%;animation-delay:1.08s"></i><i style="height:41%;animation-delay:1.20s"></i><i style="height:78%;animation-delay:1.32s"></i><i style="height:55%;animation-delay:1.44s"></i></div>
       <div class="tags"><span>AI &amp; ML</span><span>Агенты</span><span>RPA</span><span>Аналитика</span></div>
     </div>
   </div>
@@ -693,7 +705,7 @@ input[type=range]:focus-visible{outline:2px solid var(--blue);outline-offset:4px
         <div><b>24/7</b><span>работают на автопилоте</span></div>
       </div>
     </div>
-    <div class="bars2"><i style="height:30%"></i><i style="height:65%"></i><i style="height:84%"></i><i style="height:77%"></i><i style="height:48%"></i><i style="height:49%"></i><i style="height:77%"></i><i style="height:84%"></i><i style="height:64%"></i><i style="height:30%"></i><i style="height:66%"></i><i style="height:84%"></i><i style="height:77%"></i><i style="height:47%"></i><i style="height:50%"></i><i style="height:78%"></i><i style="height:83%"></i><i style="height:63%"></i><i style="height:31%"></i><i style="height:66%"></i><i style="height:84%"></i><i style="height:76%"></i><i style="height:46%"></i><i style="height:51%"></i><i style="height:78%"></i><i style="height:83%"></i><i style="height:63%"></i><i style="height:32%"></i><i style="height:67%"></i><i style="height:84%"></i><i style="height:76%"></i><i style="height:45%"></i><i style="height:51%"></i><i style="height:79%"></i><i style="height:83%"></i><i class="off" style="height:62%"></i><i class="off" style="height:33%"></i><i class="off" style="height:68%"></i><i class="off" style="height:84%"></i><i class="off" style="height:75%"></i><i class="off" style="height:44%"></i><i class="off" style="height:52%"></i><i class="off" style="height:79%"></i><i class="off" style="height:83%"></i></div>
+    <div class="bars2"><i style="height:30%;animation-delay:0.00s"></i><i style="height:65%;animation-delay:0.05s"></i><i style="height:84%;animation-delay:0.10s"></i><i style="height:77%;animation-delay:0.15s"></i><i style="height:48%;animation-delay:0.20s"></i><i style="height:49%;animation-delay:0.25s"></i><i style="height:77%;animation-delay:0.30s"></i><i style="height:84%;animation-delay:0.35s"></i><i style="height:64%;animation-delay:0.40s"></i><i style="height:30%;animation-delay:0.45s"></i><i style="height:66%;animation-delay:0.50s"></i><i style="height:84%;animation-delay:0.55s"></i><i style="height:77%;animation-delay:0.60s"></i><i style="height:47%;animation-delay:0.65s"></i><i style="height:50%;animation-delay:0.70s"></i><i style="height:78%;animation-delay:0.75s"></i><i style="height:83%;animation-delay:0.80s"></i><i style="height:63%;animation-delay:0.85s"></i><i style="height:31%;animation-delay:0.90s"></i><i style="height:66%;animation-delay:0.95s"></i><i style="height:84%;animation-delay:1.00s"></i><i style="height:76%;animation-delay:1.05s"></i><i style="height:46%;animation-delay:1.10s"></i><i style="height:51%;animation-delay:1.15s"></i><i style="height:78%;animation-delay:1.20s"></i><i style="height:83%;animation-delay:1.25s"></i><i style="height:63%;animation-delay:1.30s"></i><i style="height:32%;animation-delay:1.35s"></i><i style="height:67%;animation-delay:1.40s"></i><i style="height:84%;animation-delay:1.45s"></i><i style="height:76%;animation-delay:1.50s"></i><i style="height:45%;animation-delay:1.55s"></i><i style="height:51%;animation-delay:1.60s"></i><i style="height:79%;animation-delay:1.65s"></i><i style="height:83%;animation-delay:1.70s"></i><i class="off" style="height:62%"></i><i class="off" style="height:33%"></i><i class="off" style="height:68%"></i><i class="off" style="height:84%"></i><i class="off" style="height:75%"></i><i class="off" style="height:44%"></i><i class="off" style="height:52%"></i><i class="off" style="height:79%"></i><i class="off" style="height:83%"></i></div>
   </div>
 </div></section>
 <section id="cases" class="cases"><div class="wrap">
@@ -703,7 +715,7 @@ input[type=range]:focus-visible{outline:2px solid var(--blue);outline-offset:4px
     <div class="txt"><span class="ey" style="color:#cfc9f2">КЕЙС 01 · EdTech · образование</span>
       <h3 class="h3" style="margin:16px 0;color:#fff">ИИ-агент для анализа звонков отдела продаж</h3>
       <p style="color:#c3bfe2;max-width:46ch">Транскрибирует все звонки, выделяет возражения, точки отказа и тон разговора, формирует улучшения скриптов.</p>
-      <div class="res" style="margin-top:22px"><div class="r" style="border-color:#2a2350"><b style="color:#9E92E7">−80%</b><span>время анализа</span></div><div class="r" style="border-color:#2a2350"><b style="color:#9E92E7">100%</b><span>охват звонков</span></div><div class="r" style="border-color:#2a2350"><b style="color:#9E92E7">↑</b><span>конверсия</span></div></div>
+      <div class="res" style="margin-top:22px"><div class="r"><b>−80%</b><span>время анализа</span></div><div class="r"><b>100%</b><span>охват звонков</span></div><div class="r"><b>↑</b><span>конверсия</span></div></div>
     </div>
     <div class="vis"><span class="gl"></span>
       <div class="flow">
@@ -744,13 +756,14 @@ input[type=range]:focus-visible{outline:2px solid var(--blue);outline-offset:4px
         <div class="cur"><span id="tpoV">15</span> <small>минут</small></div>
         <input type="range" id="tpo" min="0" max="180" step="5" value="15">
         <div class="mm"><span>0</span><span>180</span></div></div>
-      <div class="note">Операция — любое повторяющееся действие: проверки документов, КП, расчёты, обзвоны. В среднем клиенты экономят <b>от 35 000 ₽ каждый месяц</b>.</div>
+      <div class="note">Операция — любое повторяющееся действие: проверки документов, КП, расчёты, обзвоны. Расчёт показывает, сколько ручного времени забирает ИИ, автоматизируя <b>~85% рутины</b>.</div>
     </div>
     <div class="result card"><h3>Итог</h3>
-      <div class="rk">Экономия часов в год</div><div class="rbig" id="hYear">1 800</div>
-      <div class="rrow"><span>Часов в месяц</span><b id="hMonth">150</b></div>
-      <div class="rrow"><span>Рабочих дней в год</span><b id="dYear">225</b></div>
-      <a class="btn wt" href="#contact" style="margin-top:22px">Персональный расчёт <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      <div class="rk">Экономия часов в год</div><div class="rbig" id="hYear">1 530</div>
+      <div class="rrow"><span>Часов в месяц</span><b id="hMonth">128</b></div>
+      <div class="rrow"><span>Высвобождаем штатных ставок</span><b id="fte">0,9</b></div>
+      <div class="rfoot">Автоматизируем ~85% рутины · 1 ставка ≈ 1&nbsp;760&nbsp;ч/год</div>
+      <a class="btn wt" href="#contact" style="margin-top:18px">Персональный расчёт <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
     </div>
   </div>
 </div></section>
@@ -792,12 +805,17 @@ input[type=range]:focus-visible{outline:2px solid var(--blue);outline-offset:4px
   if(ops&&tpo){
     var f=function(n){return Math.round(n).toLocaleString('ru-RU');};
     var fill=function(el){var p=(el.value-el.min)/(el.max-el.min)*100; el.style.setProperty('--p',p+'%');};
-    var up=function(){var N=+ops.value,T=+tpo.value,m=N*T/60,y=m*12;
+    var AUTO=0.85, FTEH=1760;
+    var up=function(){var N=+ops.value,T=+tpo.value;
+      var rm=N*T/60;        // ручных часов рутины в месяц
+      var m=rm*AUTO;        // экономия часов в месяц (85% автоматизируем)
+      var y=m*12;           // экономия часов в год
+      var fte=y/FTEH;       // эквивалент штатных ставок
       document.getElementById('opsV').textContent=N.toLocaleString('ru-RU');
       document.getElementById('tpoV').textContent=T;
       document.getElementById('hYear').textContent=f(y);
       document.getElementById('hMonth').textContent=f(m);
-      document.getElementById('dYear').textContent=f(y/8);
+      document.getElementById('fte').textContent=fte.toLocaleString('ru-RU',{minimumFractionDigits:1,maximumFractionDigits:1});
       fill(ops); fill(tpo);};
     ops.addEventListener('input',up); tpo.addEventListener('input',up); up();
   }
